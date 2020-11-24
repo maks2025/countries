@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:13.1-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: countries
+      POSTGRES_PASSWORD: countries
+      POSTGRES_DB: countries
+    ports:
+    - 5432:5432
