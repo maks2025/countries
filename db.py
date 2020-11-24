@@ -17,7 +17,7 @@ country = Table(
     Column('id', Integer, primary_key=True),
     Column('created_at', TIMESTAMP, default=datetime.utcnow, nullable=False),
     Column('updated_at', TIMESTAMP, nullable=True),
-    Column('code', String(2), nullable=False),
+    Column('code', String(2), nullable=False, unique=True),
     Column('name', String(127), nullable=True),
     Column('phone_code', String(16), nullable=True)
 )
