@@ -1,6 +1,6 @@
 # Countries
 
-##Run app
+## Run app
 
 1) create venv
 2) Run sudo docker-compose up for database
@@ -8,7 +8,7 @@
 4) alembic upgrade head
 5) python main.py 
 
-##Endpoints
+## Endpoints
 
 POST /reload  {}  
 POST /search_codes {'search_string': <string>}  
