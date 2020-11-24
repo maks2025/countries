@@ -1,10 +1,15 @@
-from aiohttp import web
+from pathlib import Path
 
 import pytz
+from aiohttp import web
 from db import init_pg, close_pg
+from dotenv import load_dotenv
 from aiocron import crontab
 from services import load
 from views import reload, search_codes, codes_countries, code_country
+
+env_path = Path('.') / 'example.env'
+load_dotenv(dotenv_path=env_path)
 
 
 @crontab('0 2 * * *', tz=pytz.timezone('Europe/Moscow'))

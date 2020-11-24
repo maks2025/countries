@@ -1,5 +1,6 @@
+import os
 from datetime import datetime
-from typing import List, Optional
+from typing import List
 
 import aiopg.sa
 from aiopg.sa.connection import SAConnection
@@ -25,11 +26,11 @@ country = Table(
 
 async def init_pg(app):
     engine = await aiopg.sa.create_engine(
-        database='countries',
-        user='countries',
-        password='countries',
-        host='localhost',
-        port=5432,
+        database=os.getenv('DB'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        host=os.getenv('DB_HOST'),
+        port=os.getenv('DB_PORT'),
     )
     app['db'] = engine
 
