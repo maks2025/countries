@@ -69,7 +69,6 @@ async def update_or_create(conn: SAConnection, data: dict, kind: str = None) -> 
             operation = insert(country).values(
                 **values
             )
-            await conn.execute(operation)
         else:
             operation = update(country).where(
                 country.c.code == code
