@@ -46,7 +46,7 @@ async def codes_countries(request):
     return web.Response(text=json.dumps(data))
 
 
-async def code_country(request):
+async def info_about_country(request):
     query = dict(request.rel_url.query)
     code = query.get('code')
     async with request.app['db'].acquire() as conn:

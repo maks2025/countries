@@ -6,7 +6,7 @@ from db import init_pg, close_pg
 from dotenv import load_dotenv
 from aiocron import crontab
 from services import load
-from views import reload, search_codes, codes_countries, code_country
+from views import reload, search_codes, codes_countries, info_about_country
 
 env_path = Path('.') / 'example.env'
 load_dotenv(dotenv_path=env_path)
@@ -29,7 +29,7 @@ app.add_routes([
     web.post('/reload', reload),
     web.post('/search_codes', search_codes),
     web.get('/codes_countries', codes_countries),
-    web.get('/code_country', code_country),
+    web.get('/info_about_country', info_about_country),
 ])
 
 

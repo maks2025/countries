@@ -10,7 +10,7 @@
 
 ## Endpoints
 
-POST /reload  {}  
-POST /search_codes {'search_string': <string>}  
+POST /reload  ```{}```  
+POST /search_codes `````{'search_string': <string>}`````  
 GET /codes_countries  
-GET /code_country  query 'code' example: /code_country?code=RU  
+GET /info_about_country  ```query 'code' example: /code_country?code=RU```  
