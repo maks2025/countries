@@ -18,7 +18,7 @@ async def reload(request):
     async with request.app['db'].acquire() as conn:
         data = await get_all(conn)
 
-    return web.Response(text=json.dumps(data))
+    return web.Response(status=201, body=json.dumps(data), content_type='application/json')
 
 
 async def search_codes(request):
@@ -32,7 +32,7 @@ async def search_codes(request):
 
     async with request.app['db'].acquire() as conn:
         data = await get_codes_countries_by_search_string(conn, search_string)
-    return web.Response(text=json.dumps(data))
+    return web.Response(status=201, body=json.dumps(data), content_type='application/json')
 
 
 async def codes_countries(request):
@@ -43,7 +43,7 @@ async def codes_countries(request):
     """
     async with request.app['db'].acquire() as conn:
         data = await get_codes_of_countries(conn)
-    return web.Response(text=json.dumps(data))
+    return web.Response(status=201, body=json.dumps(data), content_type='application/json')
 
 
 async def info_about_country(request):
@@ -51,4 +51,4 @@ async def info_about_country(request):
     code = query.get('code')
     async with request.app['db'].acquire() as conn:
         data = await get_country_info_by_code(conn, code)
-    return web.Response(text=json.dumps(data))
+    return web.Response(status=201, body=json.dumps(data), content_type='application/json')
