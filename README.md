@@ -13,4 +13,4 @@
 POST /reload  ```{}```  
 POST /search_codes `````{'search_string': <string>}`````  
 GET /codes_countries  
-GET /info_about_country  ```query 'code' example: /code_country?code=RU```  
+GET /info_about_country  ```query 'code' example: /info_about_country?code=RU```  
