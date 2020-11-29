@@ -66,20 +66,18 @@ def postgres(unused_port, session_id):
 
 
 @pytest.fixture
-async def engine(postgres):
+def engine(loop, postgres):
     port = postgres
-    engine = await aio_create_engine(
+    engine = aio_create_engine(
         database="test",
         user="test",
         password="test",
         host="localhost",
         port=port,
     )
-    yield engine
+    return loop.run_until_complete(engine)
 
 
 @pytest.fixture
-async def conn(engine):
-    conn = await engine.acquire()
-    yield conn
-    await conn.close()
+def conn(loop, engine):
+    return loop.run_until_complete(engine.acquire())
