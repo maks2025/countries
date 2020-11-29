@@ -42,3 +42,9 @@ async def test_info_about_country(cli):
     assert resp.status == 201
     info = await resp.json()
     assert sorted(info) == sorted(["SV", "El Salvador", "503"])
+
+
+async def test_codes_countries(cli):
+    resp = await cli.get('/codes_countries')
+    assert resp.status == 201
+
