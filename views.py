@@ -17,9 +17,8 @@ async def reload(request):
     :param request:
     :return:
     """
-    await load(request.app)
-
     async with request.app["db"].acquire() as conn:
+        await load(conn)
         data = await get_all(conn)
 
     return web.Response(
