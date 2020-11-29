@@ -31,7 +31,14 @@ async def test_load(conn):
     assert await r.fetchone() == ('RU', 'Russia', '7')
 
 
-async def test_search_codes(cli):
+async def test_search_codes(cli, loop):
     resp = await cli.post('/search_codes', json={'search_string': 'r'})
     assert resp.status == 201
-    assert sorted(['RU', 'RW', 'RE', 'RO', 'CG']) == sorted(await resp.json())
+    assert sorted(await resp.json()) == sorted(['RU', 'RW', 'RE', 'RO', 'CG'])
+
+
+async def test_info_about_country(cli):
+    resp = await cli.get('/info_about_country', params={'code': 'SV'})
+    assert resp.status == 201
+    info = await resp.json()
+    assert sorted(info) == sorted(["SV", "El Salvador", "503"])
