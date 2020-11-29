@@ -1,6 +1,6 @@
 import pytest
 
-pytest_plugins = ["db_fixtures", 'app_fixtures']
+pytest_plugins = ["db_fixtures", "app_fixtures"]
 
 
 def pytest_configure(config):
