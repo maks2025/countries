@@ -6,10 +6,10 @@ import sys
 test_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(test_path, ".."))
 
-from main import app
+from main import app  # noqa
 
 
-@pytest.yield_fixture(scope="function")
+@pytest.fixture(scope="function")
 def cli(loop, aiohttp_client, engine):
     app_cp = copy.deepcopy(app)
     app_cp.on_startup.clear()
